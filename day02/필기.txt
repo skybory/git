@@ -1,0 +1,126 @@
+1. revert
+81b116416f6cd322226d758c4f2d82a288539529
+
+ git revert 81b116416f6cd322226d758c4f2d82a288539529 (돌아갈 커밋 해시)		// git 명령어는 시작어가 전부 git임
+ add George 에 있는 변화만 골라서 제거, 다른 과정은 유지
+
+ git revert --continue : revert 그대로 진행
+
+  - revert 명령어를 사용하면 자동 commit 까지 이루어진다.
+  commit 은 하지 않고, revert만 하기.
+
+ git revert --no-commit 81b116416f6cd322226d758c4f2d82a288539529 (되돌릴 커밋 해시)
+
+
+//여기 필기 빠졌는지 확인하기 
+
+
+ - 취소하려면
+ git reset --hard
+
+2. branch 만들기
+  - 분기된 가지
+  - 프로젝트를 하나 이상이 모습으로 관리해야 할 때
+  예) 실배포용, 테스트서버용, 새로운 시도용...
+  - 여러 작업들이 각각 독립되어 진행될 때
+  예) 신기능1, 신기능2, ... 
+  - 각각의 가지(차원)에서 작업한 뒤 확정된 것을 메인 차원에 통합
+
+ 2-1. 브랜치 생성 / 이동 / 삭제
+  - add-coach 란 이름의 브랜치 생성
+  git branch add-coach
+
+  - 브랜치 목록 확인
+  git branch
+
+  - add-coach 브랜치로 이동
+  git switch add-coach
+
+//tab 키를 누르면 자동완성이 된다
+
+  - 브랜치 생성과 동시에 이동
+  git switch -c (새 브랜치명)
+  브랜치명 : new-teams
+
+  - 브랜치 삭제하기
+  git branch -d ( 삭제할 브랜치명 )
+
+  - 브랜치 강제삭제
+  git branch -D ( 삭제할 브랜치명 )
+
+  to-delete 란 브랜치 만들고 삭제까지 해보기
+
+  - 브랜치 이름 바꾸기
+  git branch -m ( 기존 브랜치명 ) ( 새 브랜치명 )
+
+// git log 를 통해 볼 수 있는건 현재 나의 branch 의 log 밖에 없다
+
+ 2-2. 결과 살펴보기
+  git log : 위치한 브랜치에서의 내역만 볼 수 있음
+  git log --all --decorate --oneline --graph
+
+// 병합하는 작업까지 하면 완벽. 오히려 VS코드에서 표시하는게 더 가시적인것 같기도 함?
+
+ 2-3. 서로 다른 브랜치를 합치는 두 방식
+  - merge
+	: 두 브랜치를 한 커밋에 이어붙인다.
+	브랜치 사용내역을 남길 필요가 있을 때 적합한 방식이다.
+	
+  - rebase
+	: 브랜치를 다른 브랜치에 이어 붙인다.
+	한 줄로 깔끔히 정리된 내역을 유지하기 위해 사용
+	이미 팀원과 공유된 커밋들에 대해서는 사용하지 않는게 좋다
+
+ 2-4. merge
+  - add-coach 브랜치를 main 브랜치로 merge
+   git merge (브랜치 이름)
+
+ 2-5. rebase
+  - new-teams 브랜치를 main 브랜치로 rebase
+  - merge때와는 반대로 생각
+  git rebase main
+
+ 2-6. 브랜치간 충돌 해결하기 - merge
+  - 파일의 같은 위치에 다른 내용이 입력된 상황
+
+	브랜치 생성
+	conflict-1
+	conflict-2
+
+  - 충돌 내용이 너무 많아서 merge를 중단해야 할 때는
+	git merge --abort
+
+ 2-7. 브랜치간 충돌 해결하기 - rebase
+
+
+3. Git Hub
+  - 오픈소스의 성지
+
+4. 토큰 생성
+
+5. Repository
+git remote add origin https://github.com/skybory/git-test.git
+
+	-> 로컬의 git 저장소에 원격 저장소로의 연결 추가
+
+git branch -M main
+
+	-> github 에서 권장하는 내용, 기본 브랜치 명을 main으로 설정
+
+git push -u origin main
+
+	-> 로컬 저장소의 커밋 내역들 원격으로 push(업로드)
+	-> main branch 에서의 push는 늘 origin 원격소로 전달이 된다.
+6. 원격저장소에 있는 코드 local 로 가져오기
+ git clone (원격저장소 주소)
+
+
+
+
+
+
+
+
+
+
+
